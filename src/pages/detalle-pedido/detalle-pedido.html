@@ -1,0 +1,91 @@
+<!--
+  Generated template for the DetallePedidoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar color="cabecera">
+        <ion-title>Tus Tramites</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-list>
+        <div *ngFor="let pedido of listPedido; let i = index">
+            <h3>{{pedido.nombre}}</h3>
+            <small>&nbsp;&nbsp; Los costos pueden variar segun municipio inscrito </small>
+            <div id="pedido" class="bordes">
+                <ion-grid>
+                    <ion-row justify-content-around>
+                        <ion-col col-8 id="text_Cantidad">Datos de Vehiculo</ion-col>
+                        <ion-col col-4>Precio</ion-col>
+                    </ion-row>
+
+                    <ion-row>
+                        <ion-col col-6>
+                            <ion-row no-padding>
+                                <ion-col col-2>
+                                    <button ion-button small no-padding id="buton" color="cabecera" (click)="verDetalle(pedido)">
+                                         <ion-icon name="md-open" no-padding></ion-icon>
+                                    </button>
+                                </ion-col>
+
+                                <ion-col col-2 no-padding no-margin>
+                                    <p id="cantidad"><small>Ver</small></p>
+                                </ion-col>
+
+                                <ion-col col-2>
+                                    <button ion-button small no-padding id="buton" color="cabecera" (click)="agregarDetalle(pedido,i)">
+                                        <ion-icon name="md-create" no-padding></ion-icon>
+                                     </button>
+                                </ion-col>
+                                <ion-col col-3 no-padding no-margin>
+                                    <p id="cantidad"><small>Agregar</small></p>
+                                </ion-col>
+
+                            </ion-row>
+
+
+                        </ion-col>
+
+                        <ion-col col-6>
+                            <P id="precio">${{pedido.precio}}</P>
+                        </ion-col>
+                    </ion-row>
+
+                    <button ion-button small no-padding id="buton" color="red" (click)="eliminar(pedido)">
+              Eliminar
+            </button>
+
+
+                </ion-grid>
+            </div>
+        </div>
+
+    </ion-list>
+</ion-content>
+
+<ion-footer>
+    <!--<ion-row id="pie" offset-4>
+    <p>Sub-Total: ${{subTotal}}</p>
+  </ion-row>
+  <ion-row id="pie" offset-4>
+    <p>Cargo a Domocilio: $2</p>
+  </ion-row> -->
+
+
+    <ion-row id="pie" offset-4>
+        <!--    <h4>Sub-Total: ${{subTotal}}</h4> -->
+        <h4>Total: ${{subTotal}}</h4>
+    </ion-row>
+
+
+
+    <button ion-button full ion-button id="footer" (click)="continuarPedido()" color="cabecera">
+    <ion-icon name="cash"> Continuar Tramite </ion-icon>
+  </button>
+</ion-footer>

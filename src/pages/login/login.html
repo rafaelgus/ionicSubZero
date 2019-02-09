@@ -1,0 +1,55 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content padding>
+    <br>
+    <br>
+    <div>
+        <img class="logo" src="assets/imgs/Sushi_Logo.png">
+    </div>
+    <br>
+    <br>
+    <ion-list>
+
+        <ion-item>
+            <ion-label>
+                <ion-icon color="letras" name="mail"></ion-icon>
+            </ion-label>
+            <ion-input type="email" [(ngModel)]="form.email" placeholder="Correo Electronico" class="showhideinput"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>
+                <ion-icon color="letras" name="lock"></ion-icon>
+            </ion-label>
+            <ion-input type={{type}} [(ngModel)]="form.password" class="showhideinput" placeholder="Contraseña"></ion-input>
+            <button id="boton_eye" (click)="ocultarMostrarPassword($event)" item-right>
+                <ion-icon color="letras" name={{hideorshow}}></ion-icon>
+            </button>
+        </ion-item>
+
+        <button padding ion-button full (click)="Home()" color="letras" id="boton_Iniciar">Iniciar</button>
+
+        <ion-grid>
+
+            <ion-row justify-content-around>
+                <ion-col col-4>
+                    <button class="botones" color="letras" ion-button clear (click)="goToResetPassword()"> <small>OLVIDE CONTRASEÑA </small>
+          </button>
+                </ion-col>
+
+
+                <ion-col col-4 offset-4>
+                    <button class="botones" color="letras" id="bn_Registro" ion-button clear (click)="createAccount()"><small>NO TENGO CUENTA</small></button>
+                </ion-col>
+
+            </ion-row>
+        </ion-grid>
+
+    </ion-list>
+
+
+</ion-content>

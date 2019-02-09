@@ -1,0 +1,75 @@
+<ion-header>
+    <ion-navbar color="cabecera">
+        <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+        <ion-title>
+            Realizar Tramite
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only color="royal" (click)="pedido()">
+            <ion-icon name='md-cart' is-active="false"></ion-icon>
+            <ion-badge *ngIf="listPedido.length > 0" color="danger" class="carrito-numero">{{listPedido.length }}</ion-badge>
+        </button> &nbsp; &nbsp;
+
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+    <ion-card>
+        <ion-searchbar placeholder="Buscar" (ionInput)="onInput()" [(ngModel)]="myInput"></ion-searchbar>
+        <ion-card>
+            <ion-card-header id="color_Gris" color="cabecera">
+                <ion-grid>
+                    <ion-row justify-content-around>
+                        <ion-col col-8>Tramite</ion-col>
+                        <ion-col col-4 id="precio">Precio</ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-card-header>
+
+            <ion-list>
+                <ion-grid>
+                    <ion-row *ngFor="let plato of platillos" justify-content-around>
+                        <ion-col col-3>
+                            <img src="{{SERVER}}/images/{{plato.imagen}}">
+
+                        </ion-col>
+
+                        <ion-col col-6>
+                            {{plato.descripcion}}
+                        </ion-col>
+
+                        <ion-col col-3>${{plato.precio}}</ion-col>
+
+                        <ion-col col-3>
+                            <button color="cabecera" ion-button small no-padding item-end id="buton" (click)="galeria(plato) ">
+                                 Galeria
+                            </button>
+                        </ion-col>
+
+                        <ion-col col-3>
+                            <button color="cabecera" ion-button small no-padding item-end id="buton" (click)="agregar(plato) ">
+                                 Agregar
+                            </button>
+                        </ion-col>
+                    </ion-row>
+
+                </ion-grid>
+            </ion-list>
+        </ion-card>
+    </ion-card>
+
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event) ">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+    <ion-footer *ngIf="isAgregado ">
+        <button (click)="pedido() " ion-button full ion-button id="footer " class="boton ">
+      <ion-icon name="cart "> Ver mi solicitud </ion-icon>
+    </button>
+    </ion-footer>
+
+</ion-content>

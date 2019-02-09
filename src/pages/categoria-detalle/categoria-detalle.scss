@@ -1,0 +1,44 @@
+page-categoria-detalle {
+    #footer {
+        padding: 0 !important;
+        width: 80% !important;
+        margin: 0 !important;
+        margin-bottom: 20px !important;
+    }
+    .footer {
+        z-index: 0;
+    }
+    .boton {
+        float: left;
+        left: 10%;
+        background: #FFc90d;
+    }
+    #color_Principal {
+        background: #FFc90d;
+        color: #f4ffff !important;
+        text-align: center;
+    }
+    h4 {
+        border-bottom: 1px solid gray;
+    }
+    #total {
+        border: 1px solid gray;
+        width: 200px !important;
+        height: 60px !important;
+        padding: 0px !important;
+        margin: 0px !important;
+    }
+    #buton {
+        padding: 4px;
+        float: left;
+        left: 70%;
+        margin-top: -12% !important;
+    }
+    #precio {
+        padding-left: 20px;
+    }
+    #color_Gris {
+        background: #dddddd;
+        padding: 0px !important;
+    }
+}

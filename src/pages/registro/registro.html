@@ -1,0 +1,82 @@
+<!--
+  Generated template for the RegistroPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar color="cabecera">
+        <ion-title>Registro</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-list>
+        <ion-item>
+            <ion-label>
+                <ion-icon color="letras" name="person"></ion-icon>
+            </ion-label>
+            <ion-input type="text" [(ngModel)]="form.name" placeholder="Ingrese nombre"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>
+                <ion-icon color="letras" name="mail"></ion-icon>
+            </ion-label>
+            <ion-input type="email" [(ngModel)]="form.email" placeholder="Ingrese email"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>
+                <ion-icon color="letras" name="lock"></ion-icon>
+            </ion-label>
+            <ion-input type="password" [(ngModel)]="form.password" placeholder="Ingrese contraseña"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>
+                <ion-icon color="letras" name="lock"></ion-icon>
+            </ion-label>
+            <ion-input type="password" [(ngModel)]="form.password2" placeholder="Repita contraseña"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>
+                <ion-icon color="letras" name="call"></ion-icon>
+            </ion-label>
+            <ion-input type="number" [(ngModel)]="form.telefono" placeholder="Ingrese numero de telefono"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>
+                <ion-icon color="letras" name="logo-whatsapp"></ion-icon>
+            </ion-label>
+            <ion-input type="number" [(ngModel)]="form.whatsapp" placeholder="Ingrese numero para WhatsApp"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>
+                <ion-icon color="letras" name="qr-scanner"></ion-icon>
+            </ion-label>
+            <ion-select [(ngModel)]="form.zona" placeholder="Zona">
+                <ion-option value="1">Panamá</ion-option>
+                <ion-option value="2">Arraiján</ion-option>
+                <ion-option value="3">La Chorrera</ion-option>
+
+            </ion-select>
+        </ion-item>
+
+    </ion-list>
+
+    <ion-checkbox name="acuerdo" color="dark" checked="false"></ion-checkbox>
+    <a button href="http://tramitalo.esy.es/web/aviso.html" target="_top" item-left>
+        <small> Estoy de acuerdo con los terminos y condiciones</small>
+    </a>
+
+    <div padding>
+        <button ion-button class="botones" color="letras" full type="submit" (click)="Registrarse()" color="cabecera">Registrarse</button>
+    </div>
+</ion-content>

@@ -1,0 +1,14 @@
+{
+  "name": "Tramitalo",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular",
+  "proxies": [
+    {
+      "path": "/api/",
+      "proxyUrl": "http://order.subzeroiceservices.com/"
+    }
+  ],
+  "id": "2a54a113"
+}

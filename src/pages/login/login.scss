@@ -1,0 +1,31 @@
+page-login {
+    #boton_eye {
+        background: transparent;
+        font-size: 20px;
+    }
+    .logo {
+        padding-top: 2%;
+        text-align: center;
+        margin: auto;
+        display: block;
+        width: 60%;
+        height: 10%;
+        margin-bottom: 5%;
+    }
+    .botones {
+        background: transparent;
+        font-size: 13px;
+        padding: 0;
+        margin: 0;
+        margin-top: -10%;
+    }
+    .content {
+        background: #FFc90d;
+    }
+    #bn_Registro {
+        float: right;
+    }
+    #boton_Iniciar {
+        margin-top: 5%;
+    }
+}

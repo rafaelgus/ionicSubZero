@@ -1,0 +1,32 @@
+<ion-header>
+    <ion-navbar color="cabecera">
+        <button ion-button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+        <ion-title>
+            Galeria
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="card-background-page">
+
+    <ion-card>
+        <img src="{{SERVER}}/images/{{plato.imagen}}" />
+        <div class="card-title">{{plato.nombre}}</div>
+        <div class="card-subtitle">{{plato.detalle}}</div>
+    </ion-card>
+
+    <ion-card>
+        <img src="{{SERVER}}/images/{{plato.imagen2}}" />
+        <div class="card-title">{{plato.nombre}}</div>
+        <div class="card-subtitle">{{plato.twitter}}</div>
+    </ion-card>
+
+    <ion-card>
+        <img src="{{SERVER}}/images/{{plato.imagen3}}" />
+        <div class="card-title">{{plato.nombre}}</div>
+        <div class="card-subtitle">{{plato.avisos}}</div>
+    </ion-card>
+
+</ion-content>

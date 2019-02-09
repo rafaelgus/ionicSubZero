@@ -1,0 +1,120 @@
+<!--
+  Generated template for the DatosEnvioPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar color="cabecera">
+        <ion-title>Direcciones</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-list>
+        <ion-note item-start>
+            Dirección de entrega
+        </ion-note>
+
+        <ion-grid>
+            <ion-row>
+                <ion-col col-12 no-padding>
+                    <ion-item>
+                        <ion-input [(ngModel)]="autocomplete.input" (input)="updateSearchResults()" type="text" placeholder="Introduzca direccion"></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
+        <ion-list [hidden]="autocompleteItems.length == 0">
+            <ion-note item-start>
+                <small>Seleccione direccion de entrega exacta</small>
+            </ion-note>
+            <br>
+            <ion-list [hidden]="autocompleteItems.length == 0">
+                <ion-item *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResult(item)">
+                    <small>-> {{ item.description }} </small>
+                </ion-item>
+            </ion-list>
+
+
+            <!--
+            <ion-scroll scrollY="true">
+                <ion-item *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResult(item)">
+                    <small>-> {{ item.description }}</small>
+                </ion-item>
+            </ion-scroll>
+            -->
+        </ion-list>
+        <br>
+        <br>
+
+        <ion-note item-start>
+            Dirección de retiro de documentos
+        </ion-note>
+
+        <ion-grid>
+            <ion-row>
+                <ion-col col-12 no-padding>
+                    <ion-item>
+                        <ion-input [(ngModel)]="autocomplete2.input" (input)=" updateSearchResultsRecogida()" type="text" placeholder="Introduzca direccion diferente"></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
+
+        <ion-list [hidden]="autocompleteItems2.length == 0">
+            <ion-note item-start>
+                <small>Seleccione direccion de retiro exacta</small>
+            </ion-note>
+            <br>
+
+            <ion-list [hidden]="autocompleteItems2.length == 0">
+                <ion-item *ngFor="let item of autocompleteItems2" tappable (click)="selectSearchResultRecogida(item)">
+                    <small>-> {{ item.description }} </small>
+                </ion-item>
+            </ion-list>
+
+            <!--
+            <ion-scroll scrollY="true">
+                <ion-item *ngFor="let item of autocompleteItems2" tappable (click)="selectSearchResultRecogida(item)">
+                    <small>-> {{ item.description }} </small>
+                </ion-item>
+            </ion-scroll>
+            -->
+        </ion-list>
+        <br>
+        <ion-list>
+            <ion-item>
+                <ion-label>Forma de Pago</ion-label>
+                <ion-select [(ngModel)]="selecion">
+                    <div *ngFor="let metodo of formasPago">
+                        <ion-option *ngIf="metodo.id == 1" value="{{metodo.id}}" selected>{{metodo.descripcion}}</ion-option>
+                        <ion-option *ngIf="metodo.id != 1" value="{{metodo.id}}">{{metodo.descripcion}}</ion-option>
+                    </div>
+                </ion-select>
+            </ion-item>
+        </ion-list>
+
+        <ion-note item-start>
+            Observaciones o datos de ubicación
+        </ion-note>
+
+        <ion-item>
+            <ion-textarea [(ngModel)]="observaciones" class="area" placeholder="Coloque mas detalle de su forma de pago o de su ubicacion"></ion-textarea>
+        </ion-item>
+
+    </ion-list>
+</ion-content>
+
+<ion-footer>
+    <button ion-button full ion-button id="footer" (click)="confirmarPedido()" color="cabecera">
+             <ion-icon name="paper-plane"> Total: ${{subTotal}}, Enviar </ion-icon>
+        </button>
+
+
+</ion-footer>

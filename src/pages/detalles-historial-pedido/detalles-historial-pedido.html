@@ -1,0 +1,151 @@
+<!--
+  Generated template for the DetallesHistorialPedidoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar color="cabecera">
+        <ion-title>Detalles Solicitud</ion-title>
+        <ion-buttons end>
+            <button (click)="verMapa()" ion-button icon-only>
+            <ion-icon ios="ios-map" md="md-map"></ion-icon>
+        </button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-card>
+        <ion-card-header id="color_Gris" color="cabecera" no-padding>
+            <ion-grid>
+                <ion-row justify-content-around id="color_Gris">
+                    <ion-col col-8>Tramite</ion-col>
+                    <ion-col col-4 id="precio">Precio</ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-card-header>
+
+        <!-- desde aqui se repite -->
+        <ion-list>
+            <ion-grid>
+                <ion-row justify-content-around *ngFor="let plato of platillos">
+                    <ion-col col-5>
+                        <img src="{{SERVER}}/images/{{plato.imagen}}">
+                    </ion-col>
+
+                    <ion-col col-4>
+                        {{plato.descripcion}}
+                    </ion-col>
+
+                    <ion-col col-3>{{plato.precio}}$</ion-col>
+                </ion-row>
+
+
+                <!--INFORMACION PARA EL REPARTIDOR ADICIONAL QUE NO TIENE EN COMUN CON EL USUARIO-->
+
+                <ion-note item-start margin-top>
+                    Direccion de entrega
+                </ion-note>
+
+                <ion-grid>
+                    <ion-row>
+                        <!-- si la metio manual -->
+                        <ion-col col-12 no-padding>
+                            <ion-item>
+                                <ion-label>{{orden.direccion}}</ion-label>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
+
+                </ion-grid>
+
+                <ion-item *ngIf="user.rol != 3">
+                    <ion-label>Estado de Solicitud</ion-label>
+                    <ion-select disabled="disabled" [(ngModel)]="orden.estado">
+                        <ion-option value="1">En espera</ion-option>
+                        <ion-option value="2">En Camino</ion-option>
+                        <ion-option value="3">Entregado</ion-option>
+                    </ion-select>
+                </ion-item>
+
+                <ion-item *ngIf="user.rol == 3">
+                    <ion-label>Estado de Solicitud</ion-label>
+                    <!-- Cambiar disabled cuando el repartidor pueda cambiar estado -->
+                    <ion-select [(ngModel)]="orden.estado" (ionChange)="cambiarEstado(orden.id, orden.estado)">
+                        <ion-option value="1">En espera</ion-option>
+                        <ion-option value="2">En Camino</ion-option>
+                        <ion-option value="3">Entregado</ion-option>
+                    </ion-select>
+                </ion-item>
+
+                <ion-list *ngIf="user.rol != 3">
+                    <ion-item>
+                        <ion-label>Forma de pago</ion-label>
+                        <ion-select disabled="disabled" [(ngModel)]="selecion">
+                            <div *ngFor="let metodo of formasPago">
+                                <ion-option *ngIf="metodo.id == orden.formapago" value="{{metodo.id}}" selected>{{metodo.descripcion}}</ion-option>
+                                <ion-option *ngIf="metodo.id != orden.formapago" value="{{metodo.id}}">{{metodo.descripcion}}</ion-option>
+                            </div>
+                        </ion-select>
+                    </ion-item>
+                </ion-list>
+
+                <ion-list *ngIf="user.rol == 3">
+                    <ion-item>
+                        <ion-label>Forma de pago</ion-label>
+                        <ion-select [(ngModel)]="selecion" (ionChange)="cambiarPago(orden.id)">
+                            <div *ngFor="let metodo of formasPago">
+                                <ion-option *ngIf="metodo.id == orden.formapago" value="{{metodo.id}}" selected>{{metodo.descripcion}}</ion-option>
+                                <ion-option *ngIf="metodo.id != orden.formapago" value="{{metodo.id}}">{{metodo.descripcion}}</ion-option>
+                            </div>
+                        </ion-select>
+                    </ion-item>
+                </ion-list>
+
+                <ion-item>
+                    <a *ngIf="user.rol == 3" button href="https://wa.me/{{whastapp}}?text=Hola!%20Tramitalo%20te%20agradece%20tu%20compra,%20en%20un%20momento%20llego%20con%20tu%20pedido!" target="_top" item-left>
+                        <ion-icon name="logo-whatsapp"></ion-icon> a {{orden.whatsapp}}
+                    </a>
+
+                    <a *ngIf="user.rol == 2" button href="https://wa.me/+50762302727?text=Hola!%20Soy cliente de Tramitalo%20me puedes ayudar?!" target="_top" item-left>
+                        <ion-icon name="logo-whatsapp"></ion-icon> a Tramitalo
+                    </a>
+
+                    <a *ngIf="user.rol == 3" item-right ion-button clear href="tel: {{ orden.whatsapp }} ">
+                        <ion-icon name="call"></ion-icon>&nbsp;Llamar
+                    </a>
+
+                </ion-item>
+
+                <ion-item>
+                    <button *ngIf="user.rol != 3" ion-button (click)="repetirOrden()">Repetir solicitud</button>
+                </ion-item>
+                <ion-item>
+                    <button *ngIf="orden.pagado == null && user.rol != 3" ion-button (click)="pagarOrden()">Pagar Solicitud</button>
+                </ion-item>
+
+            </ion-grid>
+        </ion-list>
+    </ion-card>
+
+
+</ion-content>
+<!--
+  <ion-footer>
+  <ion-row id="pie" offset-4>
+    <p>Sub-Total: ${{orden.total}}</p>
+  </ion-row>
+  <ion-row id="pie" offset-4>
+    <p>Cargo a Domocilio: $2</p>
+  </ion-row>
+
+  <ion-row id="pie" offset-4>
+    <h4>Total: ${{orden.total + 2}}</h4>
+  </ion-row>
+
+</ion-footer>
+-->

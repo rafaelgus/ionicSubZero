@@ -1,0 +1,46 @@
+page-detalle-pedido {
+
+h3{
+    text-align: center;
+}
+#pedido{
+    background: white;
+}
+
+p{
+    padding: 0px !important;
+}
+
+.bordes{
+    border-top: 1px solid #cdcdcd;
+    border-bottom: 1px solid #cdcdcd;
+}
+
+#buton{
+    padding: 4px;
+}
+
+#cantidad{
+    text-align: center;
+    margin-left: 4px;
+}
+
+#text_Cantidad{
+    padding-left: 5% !important;
+}
+
+#platillo{
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+#precio{
+    padding-left: 38% !important;
+}
+}
+#pie{
+    float: right;
+    margin-right: 10px !important;
+    padding: 0px !important;
+  
+}
